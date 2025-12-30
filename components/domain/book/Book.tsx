@@ -1,5 +1,5 @@
 import { getClient } from "@/lib/queries/apollo-setup";
-import { GET_BOOK } from "@/lib/queries/books/getBook";
+import { GET_BOOK } from "@/lib/queries/books";
 import { Tag, Tags } from "@/lib/types/books";
 import Image from "next/image";
 
@@ -18,9 +18,9 @@ export default async function Book({ bookId }: IBookProps){
     }
 
     return (
-        <div className="flex text-black my-4">
+        <div className="flex text-black">
             <div className="h-[214px] w-[142px]">
-                <Image src={data?.books_by_pk.image.url || "/fallback-image.jpg"} alt="" width={142} height={214} loading="lazy" />
+                <Image className="max-w-fit" src={data?.books_by_pk.image.url || "/fallback-image.jpg"} alt="" width={142} height={214} loading="lazy" />
             </div>
             <div>
                 <div>{data?.books_by_pk.rating.toFixed(1)}</div>
