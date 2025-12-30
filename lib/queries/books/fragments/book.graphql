@@ -1,0 +1,21 @@
+fragment book on books {
+        id
+        title
+        slug
+        rating
+        release_year
+        release_date
+        subtitle
+        pages
+        description
+        cached_tags(path: "Genre")
+        image {
+            url
+        }
+        contributions {
+            author {
+                name
+                slug
+            }
+        }   
+}

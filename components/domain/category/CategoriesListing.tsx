@@ -1,3 +1,4 @@
+import Link from "next/link"
 import categoriesMap from "@/lib/actions/getAllCategories"
 
 type CategoriesListingProps = {
@@ -22,7 +23,9 @@ export default function CategoriesListing({ sort = 'desc', limit = 10 }: Categor
         <div>
             <h2>Categories</h2>
             {remappedCategories().map((category, index) => (
-                <p key={index}>{category[0]}</p>
+                <Link key={index} href={`/categories/${category[1].slug}`}>
+                    <p>{category[0]}</p>
+                </Link>
             ))}
         </div>
     )

@@ -1,0 +1,7 @@
+query GetCategory($category: String!) {
+  tags(where: {tag: {_eq: $category}}) {
+    tag
+    slug
+    count
+  }
+}

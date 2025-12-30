@@ -30,3 +30,9 @@ export type Book = {
         }
     }[]
 }
+
+export type BooksTrendingData = {
+    books_trending: {
+      ids: number[];
+    };
+  }

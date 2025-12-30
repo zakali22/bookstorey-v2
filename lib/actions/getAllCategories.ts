@@ -1,5 +1,5 @@
 import { getClient } from "@/lib/queries/apollo-setup";
-import { GET_CATEGORY } from "@/lib/queries/categories/getCategory";
+import GET_CATEGORY from "@/lib/queries/categories/getCategory.graphql";
 
 export const getAllCategoriesTag = () => ([
   { category: 'Art' },

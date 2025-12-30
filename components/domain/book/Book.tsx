@@ -1,6 +1,6 @@
 import { getClient } from "@/lib/queries/apollo-setup";
-import { GET_BOOK } from "@/lib/queries/books";
-import { Tag, Tags } from "@/lib/types/books";
+import GET_BOOK from "@/lib/queries/books/getBook.graphql";
+import { Book as BookType, Tag, Tags } from "@/lib/types/books";
 import Image from "next/image";
 
 interface IBookProps {
@@ -8,7 +8,7 @@ interface IBookProps {
 }
 
 export default async function Book({ bookId }: IBookProps){
-    const { data } = await getClient().query({ query: GET_BOOK, variables: {
+    const { data } = await getClient().query<{ books_by_pk: BookType }>({ query: GET_BOOK, variables: {
         id: bookId
     } });
 
@@ -18,7 +18,7 @@ export default async function Book({ bookId }: IBookProps){
     }
 
     return (
-        <div className="flex text-black">
+        <div className="flex text-black dark:text-white">
             <div className="h-[214px] w-[142px]">
                 <Image className="max-w-fit" src={data?.books_by_pk.image.url || "/fallback-image.jpg"} alt="" width={142} height={214} loading="lazy" />
             </div>
