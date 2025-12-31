@@ -1,14 +1,14 @@
 import Book from "@/components/domain/book/Book";
 import { getClient } from "@/lib/queries/apollo-setup";
-import GET_BOOKS_BY_CATEGORY from "@/lib/queries/books/getBooksByCategory.graphql";
+import GET_BOOK_BY_IDS_BY_CATEGORY from "@/lib/queries/books/getBooksByCategory.graphql";
 import { Book as BookType } from "@/lib/types/books";
 import { CategoriesData } from "@/lib/types/categories";
 
 export default async function Category({ params }: { params: Promise<{ categoryId: string }> }){
     const { categoryId } = await params
-    const { data } = await getClient().query<CategoriesData>({ query: GET_BOOKS_BY_CATEGORY, variables: {
+    const { data } = await getClient().query<CategoriesData>({ query: GET_BOOK_BY_IDS_BY_CATEGORY, variables: {
         category: categoryId, 
-        limit: 20,
+        limit: 100,
         offset: 0
     } });
 
