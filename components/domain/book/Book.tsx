@@ -1,32 +1,19 @@
-import { getClient } from "@/lib/queries/apollo-setup";
-import GET_BOOK from "@/lib/queries/books/getBook.graphql";
-import { Book as BookType, Tag, Tags } from "@/lib/types/books";
+import { Book as BookType } from "@/lib/types/books";
 import Image from "next/image";
 
-interface IBookProps {
-    bookId: number
-}
 
-export default async function Book({ bookId }: IBookProps){
-    const { data } = await getClient().query<{ books_by_pk: BookType }>({ query: GET_BOOK, variables: {
-        id: bookId
-    } });
-
-    console.log("GetBook =>", data)
-
-    function renderCategories(tags: Tag[]){/** TODO: Display multiple categories/genres */
-    }
-
+export default async function Book(bookData: BookType){
+    console.log("Book Props =>", bookData)
     return (
         <div className="flex text-black dark:text-white">
             <div className="h-[214px] w-[142px]">
-                <Image className="max-w-fit" src={data?.books_by_pk.image.url || "/fallback-image.jpg"} alt="" width={142} height={214} loading="lazy" />
+                <Image className="max-w-fit" src={bookData.image.url || "/fallback-image.jpg"} alt="" width={142} height={214} loading="lazy" />
             </div>
             <div>
-                <div>{data?.books_by_pk.rating.toFixed(1)}</div>
-                <h2 className="max-w-max pr-6">{data?.books_by_pk.title}</h2>
-                <h3>{data?.books_by_pk.contributions[0]?.author.name}</h3>
-                <p>{data?.books_by_pk.cached_tags[0].tag}</p>
+                {bookData.rating && <div>{bookData.rating.toFixed(1)}</div>}
+                <h2 className="max-w-max pr-6">{bookData.title}</h2>
+                <h3>{bookData.contributions[0]?.author.name}</h3>
+                { bookData.cached_tags && <p>{bookData.cached_tags[0].tag}</p> }
             </div>
         </div>
     )

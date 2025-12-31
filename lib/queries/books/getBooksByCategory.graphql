@@ -1,14 +1,14 @@
 #import "./fragments/book.graphql"
 
-query GetBooksByCategory($category: String!, $limit: Int = 10, $sort: order_by = desc) {
-    tags(where: {tag: {_eq: $category}}) {
-        taggings(
-            limit: $limit
-            order_by: {book: {users_read_count: $sort, rating: $sort, ratings_count: $sort}}
-        ) {
-            book {
-                ...book
-            }
+query GetBooksByCategory($category: String!, $limit: Int = 10, $skip: Int = 0, $sort: order_by = desc) {
+    taggable_counts(
+        where: {tag: {slug: {_eq: $category}}}, 
+        order_by: {count: $sort},
+        limit: $limit,
+        offset: $skip
+    ) {
+        book {
+            ...book
         }
     }
 }

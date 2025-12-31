@@ -33,14 +33,25 @@ export const getAllCategoriesTag = () => ([
 
 const categories = getAllCategoriesTag()
 
-const allTagsData = await Promise.all(
-    categories.map(async ({category}) => {
-        const {data} = await getClient().query({ query: GET_CATEGORY, variables: {
-            category
-        }});
-        return data
-    })
-)
+let delay = -1000;
+const delayIncrement = 1000;
+
+const promises = categories.map(async ({category}) => {
+    delay += delayIncrement;
+
+    return new Promise((resolve) =>
+        setTimeout(resolve, delay))
+        .then(async () => {
+            const {data} = await getClient().query({ query: GET_CATEGORY, variables: {
+                category
+            }});
+            return data
+        })
+})
+
+const allTagsData = await Promise.all(promises)
+
+console.log("allTagsData => ", allTagsData)
 
 const remappedTagsData = allTagsData
     .filter((data): data is { tags: { tag: string; slug: string; count: number; }[] } => data !== undefined)
@@ -56,7 +67,7 @@ const remappedTagsData = allTagsData
 const mapTagsData = new Map<string, { count: number, slug: string }>()
 remappedTagsData.forEach((tag) => {
     if(!mapTagsData.has(tag.tag)){
-        mapTagsData.set(tag.tag, {count: tag.count, slug: tag.slug.split('-')[0]})
+        mapTagsData.set(tag.tag, {count: tag.count, slug: tag.slug})
     }
 })
 
