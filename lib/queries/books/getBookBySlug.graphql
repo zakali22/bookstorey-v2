@@ -1,0 +1,7 @@
+#import "./fragments/book.graphql"
+
+query GetBook($slug: String!) {
+    books(where: {slug: {_eq: $slug}}) {
+        ...book
+    }
+}

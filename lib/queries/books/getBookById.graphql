@@ -1,0 +1,7 @@
+#import "./fragments/book.graphql"
+
+query GetBook($id: Int!) {
+    books_by_pk(id: $id) {
+        ...book
+    }
+}
