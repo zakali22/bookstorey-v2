@@ -3,6 +3,8 @@ fragment book on books {
         title
         slug
         rating
+        ratings_count
+        users_read_count
         release_year
         release_date
         subtitle

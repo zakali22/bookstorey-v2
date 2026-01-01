@@ -14,6 +14,8 @@ export type Book = {
     title: string;
     slug: string;
     rating: number;
+    ratings_count: number;
+    users_read_count: number;
     release_year: Date
     release_date: Date;
     subtitle: string;
