@@ -10,7 +10,7 @@ fragment book on books {
         subtitle
         pages
         description
-        cached_tags(path: "Genre")
+        cached_tags
         image {
             url
         }

@@ -1,0 +1,14 @@
+#import "./fragments/book.graphql"
+
+query GetBooksByMood($mood: String!, $limit: Int = 10, $skip: Int = 0) {
+  taggable_counts(
+    where: {tag: {tag: {_eq: $mood}}}
+  
+    limit: $limit
+    offset: $skip
+  ) {
+    book {
+      ...book
+    }
+  }
+}

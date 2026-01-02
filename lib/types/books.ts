@@ -7,7 +7,16 @@ export type Tag = {
     count: number
 }
 
-export type Tags = Tag[]
+export type MoodTag = {
+    tag: string;
+    slug: string;
+    count: number
+}
+
+export type Tags = {
+    Genre: Tag[];
+    Mood: MoodTag[]
+}
 
 export type Book = {
     id: number;

@@ -1,0 +1,12 @@
+query GetMood($moodSlug: String, $moodTag: String) {
+  moodSlug: tags(where: {slug: {_eq: $moodSlug}}) {
+    tag
+    slug
+    count
+  }
+  moodTag: tags(where: {tag: {_eq: $moodTag}}) {
+    tag
+    slug
+    count
+  }
+}

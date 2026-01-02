@@ -1,35 +1,40 @@
 import { getClient } from "@/lib/queries/apollo-setup";
 import GET_CATEGORY from "@/lib/queries/categories/getCategory.graphql";
 
-export const getAllCategoriesTag = () => ([
-  { category: 'Art' },
-  { category: 'Biography' },
-  { category: 'Computers' },
-  { category: 'Education' },
-  { category: 'History' },
-  { category: 'Fiction' },
-  { category: 'Science fiction' },
-  { category: 'Languages' },
-  { category: 'Mathematics' },
-  { category: 'Medicine' },
-  { category: 'Politics' },
-  { category: 'Psychology' },
-  { category: 'Religion' },
-  { category: 'Islam' },
-  { category: 'Christianity' },
-  { category: 'Judaism' },
-  { category: 'Hinduism' },
-  { category: 'Buddhism' },
-  { category: 'Science' },
-  { category: 'Social Science' },
-  { category: 'Engineering' },
-  { category: 'Civil Engineering' },
-  { category: 'Chemical Engineering' },
-  { category: 'Mechanical Engineering' },
-  { category: 'Electrical Engineering' },
-  { category: 'Computer Engineering' },
-  { category: 'Travel' },
-])
+export const getAllCategoriesTag = () => {
+    const categories = [
+      'Art',
+      'Biography',
+      'Computers',
+      'Education',
+      'History',
+      'Fiction',
+      'Science fiction',
+      'Languages',
+      'Mathematics',
+      'Medicine',
+      'Politics',
+      'Psychology',
+      'Religion',
+      'Islam',
+      'Christianity',
+      'Judaism',
+      'Hinduism',
+      'Buddhism',
+      'Science',
+      'Social Science',
+      'Engineering',
+      'Civil Engineering',
+      'Chemical Engineering',
+      'Mechanical Engineering',
+      'Electrical Engineering',
+      'Computer Engineering',
+      'Travel',
+    ];
+  
+    return categories.map((category) => ({ category }));
+};
+  
 
 const categories = getAllCategoriesTag()
 
