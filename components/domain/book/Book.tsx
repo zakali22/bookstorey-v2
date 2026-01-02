@@ -15,7 +15,7 @@ export default async function Book(bookData: BookType){
                 <h2 className="max-w-max pr-6">{bookData.title}</h2>
                 <h3>{bookData.contributions[0]?.author.name}</h3>
                 <div>
-                    {bookData.cached_tags && bookData.cached_tags.slice(0, 3).map((tag) => (
+                    {Array.isArray(bookData.cached_tags) && bookData.cached_tags.slice(0, 3).map((tag) => (
                         <p key={tag.tagSlug}>{tag.tag}</p> 
                     ))}
                 </div>
