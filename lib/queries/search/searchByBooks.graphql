@@ -1,0 +1,10 @@
+query SearchByBooks($title: String!, $limit: Int = 30, $page: Int = 1) {
+    search(
+        query: $title,
+        query_type: "Book",
+        per_page: $limit,
+        page: $page
+    ) {
+        results
+    }
+}

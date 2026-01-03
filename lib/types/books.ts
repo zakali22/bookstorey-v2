@@ -1,3 +1,5 @@
+import { MoodTag } from "./moods";
+
 export type Tag = {
     tag: string,
     tagSlug: string,
@@ -7,13 +9,18 @@ export type Tag = {
     count: number
 }
 
-export type Tags = Tag[]
+export type Tags = {
+    Genre: Tag[];
+    Mood: MoodTag[]
+}
 
 export type Book = {
     id: number;
     title: string;
     slug: string;
     rating: number;
+    ratings_count: number;
+    users_read_count: number;
     release_year: Date
     release_date: Date;
     subtitle: string;
