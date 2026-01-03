@@ -46,7 +46,7 @@ export default async function Book({ params }: { params: Promise<{ slug: string 
                     <div className="mt-2">
                         <h3>Moods</h3>
                         {book?.cached_tags['Mood'].slice(0, 4).map((tag) => (
-                            <Link href={`/moods/${tag.tagSlug}`} key={tag.tagSlug}>
+                            <Link href={`/moods/${tag.slug}`} key={tag.slug}>
                                 <p>{tag.tag.charAt(0).toUpperCase() + tag.tag.slice(1)}</p>
                             </Link>
                         ))}

@@ -1,9 +1,11 @@
+"use client"
+
 import { Book as BookType } from "@/lib/types/books";
 import Image from "next/image";
 import Link from "next/link";
 
 
-export default async function Book(bookData: BookType){
+export default function Book(bookData: BookType){
     console.log("Book Props =>", bookData)
     return (
         <Link href={`/books/${bookData.slug}`} className="flex text-black dark:text-white">

@@ -1,15 +1,11 @@
+import { MoodTag } from "./moods";
+
 export type Tag = {
     tag: string,
     tagSlug: string,
     category: string,
     categorySlug: string,
     spoilerRatio: number,
-    count: number
-}
-
-export type MoodTag = {
-    tag: string;
-    slug: string;
     count: number
 }
 

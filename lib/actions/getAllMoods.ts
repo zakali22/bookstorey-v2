@@ -1,6 +1,6 @@
 import { getClient } from "@/lib/queries/apollo-setup";
 import GET_MOOD from "@/lib/queries/moods/getMood.graphql";
-import { MoodTag } from "../types/books";
+import { MoodTag } from "../types/moods";
 
 export const getAllMoodsTag = () => {
     const moods = [
